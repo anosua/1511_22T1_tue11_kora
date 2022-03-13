@@ -7,48 +7,35 @@
 #define TOTAL_NUM 10
 
 int main(void) {
-
-    int inputs[TOTAL_NUM] = {0};
+    int number[TOTAL_NUM] = {0};
     
-    int counter = 0;
-    while (counter < TOTAL_NUM) {
+    // scan numbers into our array
+    int num_scanned_in = 0;
+    while (num_scanned_in < TOTAL_NUM) {
+        int input;
+        scanf("%d", &input);
+        number[num_scanned_in] = input;
         
-        printf("%d ", inputs[counter]);
-        
-        counter++;
+        num_scanned_in++;
     }
-    printf("\n");
     
-    /*
-    int counter = 0;
-    while (counter < TOTAL_NUM) {
-        int curr_num;
-        scanf("%d", &curr_num);
-        inputs[counter] = curr_num;
+    int count = 0;
+    int high = number[0];
+    int low = number[0];
+    while (count < TOTAL_NUM) {
         
-        counter++;
-    }
-    */
-    
-    int lowest_number = inputs[0];
-    int highest_number = inputs[0];
-    counter = 1;
-    while (counter < TOTAL_NUM) {
-        
-        if (inputs[counter] < lowest_number) {
-            lowest_number = inputs[counter];
-        } else if (inputs[counter] > highest_number) {
-            highest_number = inputs[counter];
+        if (low > number[count]) {
+            low = number[count];
         }
         
-        counter++;
+        if (high < number[count]) {
+            high = number[count];
+        }
+        
+        count++;
     }
     
-    printf("hi: %d, low: %d, mid: %d\n", 
-            highest_number, lowest_number, 
-            (highest_number + lowest_number)/ 2
-    );
+    printf("hi: %d, lo: %d, mid: %d\n", high, low, (high + low)/2);
     
-
     return 0;
 }
